@@ -11,10 +11,18 @@ overflow-x: hidden;
 letter-spacing: 0.02rem;
 }
 
+h2{
+    font-weight: 900;
+    font-size: 4rem;
+    padding-bottom: 0.5rem;
+}
 
 .subtitle{
-
+    font-weight: 900;
+    font-size: 1.8rem;
+    letter-spacing: 0.03rem;
 }
+
 
 
 a{
@@ -47,6 +55,9 @@ a.box{
 }
 .color-white{
     color: #fff;
+}
+.color-black{
+    color: #000;
 }
 
 .dc-btn{
