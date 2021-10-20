@@ -1,0 +1,35 @@
+$dark: #31292A;
+$primary: rgb(222, 10, 28);
+$grey: #666666;
+$light-grey: #F5F5F5;
+
+$navbar-dark-color: rgba(255,255,255, 1);
+$navbar-dark-hover-color: $grey;
+$navbar-dark-disabled-color: rgba(255,255,255, 0.3);
+$navbar-dark-active-color: $dark;
+
+
+
+$transition: 0.2s ease-in-out;
+$border-radius: 1.5rem;
+
+
+@font-face {
+    font-family: 'TCCC-UnityHeadline';
+    src: url('../fonts/TCCC-UnityHeadline-Regular.woff2') format('woff2'),
+        url('../fonts/TCCC-UnityHeadline-Regular.woff') format('woff'),
+        url('../fonts/TCCC-UnityHeadline-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'TCCC-UnityHeadline';
+    src: url('../fonts/TCCC-UnityHeadline-Black.woff2') format('woff2'),
+        url('../fonts/TCCC-UnityHeadline-Black.woff') format('woff'),
+        url('../fonts/TCCC-UnityHeadline-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
