@@ -13,9 +13,12 @@
   padding-top: 5rem;
   &__txt {
     color: $grey;
+    padding-top: 5rem;
+    font-size: 1.5rem;
     h4 {
       font-weight: 900;
-      font-size: 1.7rem;
+      font-size: 2rem;
+      margin-bottom: 2rem;
     }
   }
   &__video {
@@ -29,6 +32,15 @@
       position: relative;
       // min-height: 60rem;
       overflow: hidden;
+      cursor: pointer;
+      img{
+        transition: $transition;
+      }
+      &:hover{
+        img{
+          filter: brightness(1.1);
+        }
+      }
     }
     &--cont {
       position: relative;
@@ -55,7 +67,7 @@
         background-size: contain;
         right: 0;
         top: 0;
-        transform: translate(50%,70%);
+        transform: translate(50%,50%);
       }
     }
   }
@@ -90,16 +102,28 @@
     padding-top: 5rem;
   }
   &__card {
-    background-color: $light-grey;
     overflow: hidden;
     border: 2px solid transparent;
     height: 100%;
+    background-color: transparent;
     // display: flex;
     // flex-direction: column;
     &:hover{
       border-color: $primary;
     }
+    img{
+      object-fit: cover;
+      object-position: center top;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1/1;
+    }
   }
+  .card-body{
+    background-color: $light-grey;
+    padding-left: 2.2rem;
+  }
+
   &__name {
     font-weight: 900;
     font-size: 1.8rem;
@@ -165,6 +189,7 @@
   }
   &__card {
     border: none;
+
     @include media-breakpoint-down(lg){
       margin-bottom: 4rem;
     }
@@ -193,7 +218,17 @@
         left: 50%;
         border-radius: 50%;
         transform: translate(-50%, -50%);
+        transition: $transition;
       }
+  }
+  .card{
+    &:hover{
+      .card-body{
+          &::after {
+            transform: translate(-50%, -70%);
+          }
+        }
+    }
   }
   &__name {
     font-size: 3.5rem;
@@ -248,8 +283,8 @@
       transition: $transition;
       color: #fff;
       padding: 4rem;
-      flex-grow: 1.5;
-      flex-shrink: 1.5;
+      flex-grow: 1;
+      flex-shrink: 1;
       margin: 0.8rem;
       margin-bottom: 5rem;
       border-radius: $border-radius;
@@ -288,7 +323,7 @@
         font-weight: 900;
         font-size: 1.5rem;
         letter-spacing: 0.06rem;
-        padding: 1.7rem 5rem 1.9rem 5rem;
+        padding: 1.3rem 4rem 1.5rem 4rem;
         border-radius: 4.5rem;
         justify-content: center;
         align-items: center;

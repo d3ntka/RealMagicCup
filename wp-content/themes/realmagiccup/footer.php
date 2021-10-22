@@ -15,7 +15,7 @@
 			?>
 		</main><!-- /#main -->
 		<footer id="footer" class="footer">
-			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg/cooola.png" alt="">
+			<img class="footer__bubbles" src="<?php echo get_template_directory_uri(); ?>/assets/img/bg/cooola.png" alt="">
 		<div class="footer__cont">
 			<!-- <div class="container"> -->
 				<div class="row align-items-center justify-content-center">

@@ -95,28 +95,29 @@ get_header();
                         
                             the_row(); ?>
                             <div class="col-md-6 col-lg-3 mb-4">
-                                <a class="card streamers__card" href="<?php if ( $streamer_url = get_sub_field( 'streamer_url' ) ) : ?>
-                                            <?php echo esc_url( $streamer_url ); ?>
-                                        <?php endif; ?>">
-                                    <?php $streamer_photo = get_sub_field('streamer_photo');
-                                    if ($streamer_photo) : ?>
-                                        <!-- <div class="streamers__img"> -->
-                                        <img src="<?php echo esc_url($streamer_photo['url']); ?>" alt="<?php echo esc_attr($streamer_photo['alt']); ?>" />
-                                        <!-- </div> -->
-                                    <?php endif; ?>
-                                    <div class="card-body">
-                                        <?php if ($streamer_name = get_sub_field('streamer_name')) : ?>
-                                            <div class="card-title streamers__name">
-                                                <?php echo esc_html($streamer_name); ?>
-                                            </div>
+
+                                    <a class="card streamers__card" href="<?php if ( $streamer_url = get_sub_field( 'streamer_url' ) ) : ?>
+                                                <?php echo esc_url( $streamer_url ); ?>
+                                            <?php endif; ?>">
+                                        <?php $streamer_photo = get_sub_field('streamer_photo');
+                                        if ($streamer_photo) : ?>
+                                            <!-- <div class="streamers__img"> -->
+                                            <img src="<?php echo esc_url($streamer_photo['url']); ?>" alt="<?php echo esc_attr($streamer_photo['alt']); ?>" />
+                                            <!-- </div> -->
                                         <?php endif; ?>
-                                        <?php if ($streamer_txt = get_sub_field('streamer_txt')) : ?>
-                                            <p class="card-text streamers__txt">
-                                                <?php echo esc_html($streamer_txt); ?>
-                                            </p>
-                                        <?php endif; ?>
-                                    </div>
-                                </a>
+                                        <div class="card-body">
+                                            <?php if ($streamer_name = get_sub_field('streamer_name')) : ?>
+                                                <div class="card-title streamers__name">
+                                                    <?php echo esc_html($streamer_name); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php if ($streamer_txt = get_sub_field('streamer_txt')) : ?>
+                                                <p class="card-text streamers__txt">
+                                                    <?php echo esc_html($streamer_txt); ?>
+                                                </p>
+                                            <?php endif; ?>
+                                        </div>
+                                    </a>
 
                             </div>
 
@@ -284,16 +285,21 @@ get_header();
                     <div class="schedule__game--date" ><?php echo esc_html( $game_date ); ?></div>
                 <?php endif; ?>
 
-                <?php if ( $game_link = get_sub_field( 'game_link' ) ) : ?>
-                    <a href="<?php echo esc_url( $game_link ); ?>">
+                    <?php
+                    $link = get_sub_field( 'game_link' );
+                    if ( $link ) :
+                        $link_url = $link['url'];
+                        $link_title = $link['title'];
+                        $link_target = $link['target'] ? $link['target'] : '_self';
+                        ?>
+                    <a href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
                         <div class="game__btn">
                             <span>
-                                Zobacz więcej
+                                <?php echo esc_html( $link_title ); ?>
                             </span>
                         </div>
                     </a>
-                <?php endif; ?>
-                
+                    <?php endif; ?>
             </div>
     
     
