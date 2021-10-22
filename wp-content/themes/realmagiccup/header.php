@@ -3,22 +3,22 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory()?>/assets/fav/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="<?php echo get_stylesheet_directory()?>/assets/fav/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory()?>/assets/fav/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_stylesheet_directory()?>/assets/fav/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory()?>/assets/fav/favicon-16x16.png">
-	<link rel="manifest" href="<?php echo get_stylesheet_directory()?>/assets/fav/manifest.json">
+	<link rel="apple-touch-icon" sizes="57x57" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri(); ?>/assets/fav/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="<?php echo get_template_directory_uri(); ?>/assets/fav/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri(); ?>/assets/fav/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="<?php echo get_template_directory_uri(); ?>/assets/fav/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri(); ?>/assets/fav/favicon-16x16.png">
+	<link rel="manifest" href="<?php echo get_template_directory_uri(); ?>/assets/fav/manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="<?php echo get_stylesheet_directory()?>/assets/fav/ms-icon-144x144.png">
+	<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/assets/fav/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
 </head>
@@ -57,7 +57,7 @@
 						);
 					?>
 				</div><!-- /.navbar-collapse -->
-				<a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+				<!-- <a class="navbar-brand" href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
 					<?php
 						$header_logo = get_theme_mod( 'header_logo' ); // Get custom meta-value.
 
@@ -69,10 +69,10 @@
 							echo esc_attr( get_bloginfo( 'name', 'display' ) );
 						endif;
 					?>
-				</a>
+				</a> -->
+				
 
-
-				<div id="navbar" class="collapse navbar-collapse">
+				<div id="navbar" class="collapse navbar-collapse justify-content-lg-end">
 				<div class="header__dc">
 					<span class="d-none d-lg-flex">
 						Dołącz na nasz serwer
@@ -105,7 +105,7 @@
 		</nav><!-- /#header -->
 	</header>
 
-	<main id="main" class=<?php if ( isset( $navbar_position ) && 'fixed_top' === $navbar_position ) : echo ' style="padding-top: 100px;"'; elseif ( isset( $navbar_position ) && 'fixed_bottom' === $navbar_position ) : echo ' style="padding-bottom: 100px;"'; endif; ?>>
+	<main id="main" class=<?php if ( isset( $navbar_position ) && 'fixed_bottom' === $navbar_position ) : echo ' style="padding-bottom: 100px;"'; endif; ?>>
 		<?php
 			// If Single or Archive (Category, Tag, Author or a Date based page).
 			if ( is_single() || is_archive() ) :

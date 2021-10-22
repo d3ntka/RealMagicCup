@@ -13,12 +13,16 @@ if ($video_url = get_field('video_url'));
 get_header();
 ?>
 
+<section class="cover">
+    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg/hellothere.png" alt="">
+</section>
 
 <section class="intro">
     <div class="container">
+        <div class="intro__video--cont"></div>
         <div class="row intro__video--bg">
 
-            <?php if ($video_url) : ?>
+            <!-- <?php if ($video_url) : ?>
 
                 <div class="play-backdrop"></div>
                 <div class="play-button">
@@ -36,13 +40,23 @@ get_header();
                     </div>
                 </div>
 
+            <?php endif; ?> -->
+
+            <?php if ($video_url) : 
+            $video_url_poster = get_field( 'video_url_poster' ); ?>
+                <div class="video-container">
+                    <img id="video" src="<?php echo esc_url( $video_url_poster['url'] ); ?>" data-video="<?php echo $video_url; ?>">
+                    <!-- <iframe src="<?php echo $video_url; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                </div>
             <?php endif; ?>
-
-            <!-- <div class="video-container">
-                    <iframe src="<?php echo $video_url; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>  -->
+           
         </div>
-
+<script>
+    jQuery('#video').click(function(){
+    var video = '<iframe src="'+ jQuery(this).attr('data-video') +'"title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    jQuery(this).replaceWith(video);
+    });
+</script>
 
         <?php if ($video_txt) : ?>
             <div class="intro__txt">
@@ -73,13 +87,17 @@ get_header();
 
         <?php if (have_rows('streamerzy')) : ?>
             <div class="streamers__rptr">
+                <div class="row">
                 <div class="col-10">
 
                     <div class="row">
                         <?php while (have_rows('streamerzy')) :
+                        
                             the_row(); ?>
                             <div class="col-md-6 col-lg-3 mb-4">
-                                <div class="card streamers__card">
+                                <a class="card streamers__card" href="<?php if ( $streamer_url = get_sub_field( 'streamer_url' ) ) : ?>
+                                            <?php echo esc_url( $streamer_url ); ?>
+                                        <?php endif; ?>">
                                     <?php $streamer_photo = get_sub_field('streamer_photo');
                                     if ($streamer_photo) : ?>
                                         <!-- <div class="streamers__img"> -->
@@ -98,14 +116,19 @@ get_header();
                                             </p>
                                         <?php endif; ?>
                                     </div>
-                                </div>
+                                </a>
 
                             </div>
 
                         <?php endwhile; ?>
                     </div>
                 </div>
+                <div class="col-2 streamers__cola">
+                    <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg/streamers_cola.png" alt=""> -->
+                </div>
             </div>
+            </div>
+
         <?php endif; ?>
 
 
@@ -138,9 +161,9 @@ get_header();
                             <?php
                             $host_photo = get_sub_field('host_photo');
                             if ($host_photo) : ?>
-                                <div class="hosts__img">
+                                <!-- <div class="hosts__img"> -->
                                     <img src="<?php echo esc_url($host_photo['url']); ?>" alt="<?php echo esc_attr($host_photo['alt']); ?>" />
-                                </div>
+                                <!-- </div> -->
                             <?php endif; ?>
                             <div class="card-body">
     
@@ -213,54 +236,76 @@ get_header();
 
 </section>
 
-<?php if ( $schedule_title = get_field( 'schedule_title' ) ) : ?>
-	<?php echo esc_html( $schedule_title ); ?>
-<?php endif; ?>
+<div class="schedule">
+    <div class="container">
 
-<?php if ( $schedule_subtitle = get_field( 'schedule_subtitle' ) ) : ?>
-	<?php echo esc_html( $schedule_subtitle ); ?>
-<?php endif; ?>
+    <?php if ( $schedule_title = get_field( 'schedule_title' ) ) : ?>
+        <h2>
+            <?php echo esc_html( $schedule_title ); ?>
+        </h2>
+    <?php endif; ?>
+    
+    <?php if ( $schedule_subtitle = get_field( 'schedule_subtitle' ) ) : ?>
+        <div class="subtitle color-primary">
+            <?php echo esc_html( $schedule_subtitle ); ?>
+        </div>
+    <?php endif; ?>
+    
+    <?php if ( have_rows( 'Schedule_games' ) ) : ?>
+        <div class="schedule__games">
 
-<?php if ( have_rows( 'Schedule_games' ) ) : ?>
-	<?php while ( have_rows( 'Schedule_games' ) ) :
-		the_row(); ?>
-			<?php
-		$game_bg_field = get_sub_field( 'game_bg' );
-        $game_bg = $game_bg_field['url'];
+        <?php while ( have_rows( 'Schedule_games' ) ) :
+            the_row(); ?>
+                <?php
+            $game_bg_field = get_sub_field( 'game_bg' );
+            $game_bg = $game_bg_field['url'];
+    
+             ?>
+    
+            <div class="schedule__game" style="background-image:url('<?=$game_bg?>')">
+                <?php
+                $game_icon = get_sub_field( 'game_icon' );
+                if ( $game_icon ) : ?>
+                <div class="">
+                    <img class="schedule__game--icon" src="<?php echo esc_url( $game_icon['url'] ); ?>" alt="<?php echo esc_attr( $game_icon['alt'] ); ?>" />
+                </div>
+                <?php endif; ?>
+    
+                <!-- <div class=""> -->
+                    <?php if ( $game_phase = get_sub_field( 'game_phase' ) ) : ?>
+                        <div class="schedule__game--phase" ><?php echo esc_html( $game_phase ); ?></div>
+                    <?php endif; ?>
+                    <?php if ( $game_name = get_sub_field( 'game_name' ) ) : ?>
+                        <div class="schedule__game--name" ><?php echo ( $game_name ); ?></div>
+                    <?php endif; ?>
+                <!-- </div> -->
 
-		 ?>
+                <?php if ( $game_date = get_sub_field( 'game_date' ) ) : ?>
+                    <div class="schedule__game--date" ><?php echo esc_html( $game_date ); ?></div>
+                <?php endif; ?>
 
-        <div class="schedule__game" style="background:url('<?=$game_bg?>')">
-            <?php
-            $game_icon = get_sub_field( 'game_icon' );
-            if ( $game_icon ) : ?>
-                <img src="<?php echo esc_url( $game_icon['url'] ); ?>" alt="<?php echo esc_attr( $game_icon['alt'] ); ?>" />
-            <?php endif; ?>
-
-            <?php if ( $game_phase = get_sub_field( 'game_phase' ) ) : ?>
-                <?php echo esc_html( $game_phase ); ?>
-            <?php endif; ?>
-
-            <?php if ( $game_name = get_sub_field( 'game_name' ) ) : ?>
-                <?php echo esc_html( $game_name ); ?>
-            <?php endif; ?>
-
-            <?php if ( $game_date = get_sub_field( 'game_date' ) ) : ?>
-                <?php echo esc_html( $game_date ); ?>
-            <?php endif; ?>
-
-            <?php if ( $game_link = get_sub_field( 'game_link' ) ) : ?>
-                <?php echo esc_url( $game_link ); ?>
-            <?php endif; ?>
-            
+                <?php if ( $game_link = get_sub_field( 'game_link' ) ) : ?>
+                    <a href="<?php echo esc_url( $game_link ); ?>">
+                        <div class="game__btn">
+                            <span>
+                                Zobacz więcej
+                            </span>
+                        </div>
+                    </a>
+                <?php endif; ?>
+                
+            </div>
+    
+    
+    
+        <?php endwhile; ?>
         </div>
 
+    <?php endif; ?>
 
+    </div>
+</div>
 
-	<?php endwhile; ?>
-<?php endif; ?>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js"></script>
 
 <?php
 get_footer();
