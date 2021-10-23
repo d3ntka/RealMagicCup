@@ -17,7 +17,7 @@ get_header();
     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg/hellothere.png" alt="">
 </section>
 
-<section class="intro">
+<section class="intro" id="turniej">
     <div class="container">
         <div class="intro__video--cont"></div>
         <div class="row intro__video--bg">
@@ -71,7 +71,7 @@ get_header();
 </section>
 
 
-<section class="streamers">
+<section class="streamers" id="streamerzy">
     <div class="container">
 
         <?php if ($streamers_title = get_field('streamers_title')) : ?>
@@ -88,7 +88,7 @@ get_header();
         <?php if (have_rows('streamerzy')) : ?>
             <div class="streamers__rptr">
                 <div class="row">
-                <div class="col-10">
+                <div class="col-md-10">
 
                     <div class="row">
                         <?php while (have_rows('streamerzy')) :
@@ -136,7 +136,7 @@ get_header();
     </div>
 
 </section>
-<section class="hosts">
+<section class="hosts" id="prowadzacy">
     <div class="hosts__path">
         <div class="container">
             <?php if ($hosts_title = get_field('hosts_title')) : ?>
@@ -237,7 +237,7 @@ get_header();
 
 </section>
 
-<div class="schedule">
+<div class="schedule" id="harmonogram">
     <div class="container">
 
     <?php if ( $schedule_title = get_field( 'schedule_title' ) ) : ?>

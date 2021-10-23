@@ -1,7 +1,7 @@
 <div class="page-nav">
     <div class="page-nav__cont flex justify-content-between">
         <div class="page-nav__els">
-            <a class="btns" href="">
+            <a class="btns" href="<?php echo get_home_url(); ?>">
                 < wróć na główną </a>
         </div>
         <div class="">

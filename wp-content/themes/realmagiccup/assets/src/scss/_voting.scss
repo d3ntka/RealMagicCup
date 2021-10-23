@@ -1,7 +1,7 @@
 .voting{
     position: relative;
     padding-top: 7rem;
-    padding-bottom: 70rem;
+    padding-bottom: 25rem;
     z-index: 50;
     &__header{
         text-align: center;
@@ -13,15 +13,16 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        bottom: 0;
+        bottom: -5rem;
         width: 100%;
         height: 26rem;
-        z-index: -1;
+        z-index: -50;
     }
     .wp-polls-ul{
         display: flex;
         align-items: center;
         justify-content: space-around;
+        margin: 5rem 0;
         li{
             background-color: $primary;
             border-radius: $border-radius;
@@ -39,15 +40,34 @@
                 height: 30rem;
                 text-align: center;
                 padding-bottom: 8rem;
-                cursor: pointer;
+                line-height: 1.1;
+                border-radius: $border-radius;
+                .overlay{
+                    position: absolute;
+                    width: calc(100% - 1.6rem);
+                    height: calc(100% - 1.6rem);
+                    opacity: 0.0;
+                    top: 0;
+                    left: 0;
+                    margin: 0.8rem;
+                    border: 3px solid #fff;
+                    border-radius: $border-radius;
+                    transition: $transition;
+                }
+            }
+            &.pointer{
+                label{
+                    cursor: pointer;
+                }
             }
         }
+
             
         /* Hide the browser's default checkbox */
         li input {
             position: absolute;
             opacity: 0;
-            cursor: pointer;
+            // cursor: pointer;
             height: 0;
             width: 0;
         }
@@ -56,49 +76,74 @@
         .checkmark {
             position: absolute;
             left: 50%;
-            bottom: 2rem;
-            height: 48px;
-            width: 48px;
-            background-color: #eee;
             transform: translateX(-50%);
+            bottom: 2rem;
+            height: 41px;
+            width: 41px;
+            background-color: #B90313;
             border-radius: 50%;
+            border: 5px solid rgba(#fff, 0.8);
+            outline: 7px solid #B90313;
+            transition: $transition;
         }
         
         /* On mouse-over, add a grey background color */
         li:hover input ~ .checkmark {
-            background-color: #ccc;
+            // height: 24px;
+            // width: 24px;
+            // border: 5px solid rgba(#fff, 0.8);
+            // outline: 7px solid #B90313;
+        }
+        li:hover input ~ .checkmark:after {
+            opacity: 0.5;
         }
         
-        /* When the checkbox is checked, add a blue background */
+        /* When the checkbox is checked, add a white border */
         li input:checked ~ .checkmark {
-            background-color: #2196F3;
+            // background-color: #2196F3;
+            border: 5px solid rgba(#fff, 1);
+
         }
         
         /* Create the checkmark/indicator (hidden when not checked) */
         .checkmark:after {
             content: "";
             position: absolute;
-            display: none;
+            // display: none;
+            opacity: 0;
+            transition: 0.2s ease;
+
         }
         
         /* Show the checkmark when checked */
         li input:checked ~ .checkmark:after {
-            display: block;
+            // display: block;
+            opacity: 1;
+            // transition: 0.1s ease;
+
         }
         
         /* Style the checkmark/indicator */
         li .checkmark:after {
-            left: 9px;
-            top: 5px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            -webkit-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
         }
-        
+
+        /* When the checkbox is checked, add overlay */
+        li:hover input ~ .overlay {
+            opacity: 0.5;
+        }
+        li input:checked ~ .overlay {
+            opacity: 1;
+        }
+        li .overlay.on{
+            opacity: 1;
+        }
     }
     .Buttons{
         margin: 5rem auto;
@@ -106,7 +151,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 3rem 13rem;
+        padding: 2.7rem 8rem;
         text-align: center;
         border: none;
         border-radius: 4.5rem;
@@ -119,10 +164,97 @@
             background-color: $primary;
         }
     }
-    .show_results{
+    .text-btn{
         color: $dark;
+        text-transform: uppercase;
         &:hover{
             color: $primary;
+        }
+    }
+    .poll__results{
+        &--wrap{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 2rem;
+            width: inherit;
+            padding-left: inherit;
+            padding-right: inherit;
+        }
+        display: flex;
+        width: 100%;
+        align-items: center;
+        &--votes{
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 7px;
+            span{
+                text-decoration: underline;
+            }
+        }
+        &--bar{
+            width: 100%;
+            // border: 2px solid #fff;
+            border-radius: $border-radius;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 14px;
+            position: relative;
+            .pollbar{
+                border-radius: $border-radius;
+                height: 14px;
+                // margin-left: -1px;
+                // margin-right: -1px;
+                // padding-left: 1px;
+                // padding-right: 2px;
+                min-width: 5%;
+                &::after{
+                    content: "";
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    border-radius: $border-radius;
+                    position: absolute;
+                    border: 2px solid #fff;
+                    height: 100%;
+                }
+            }
+        }
+        &--percent{
+            display: flex;
+            align-items: center;
+            padding-left: 1rem;
+            line-height: 1;
+            margin-top: -3px;
+            font-size: 1.5rem;
+        }
+    }
+    ul{
+        li{ 
+            &:nth-child(1) label{
+                background: linear-gradient(180deg, rgba($primary,0) 0%, rgba($primary,0.8) 80%, rgba($primary,1) 100%), url( '../img/games/game-1.png');
+            }
+            &:nth-child(2) label{
+                background: linear-gradient(180deg, rgba($primary,0) 0%, rgba($primary,0.8) 80%, rgba($primary,1) 100%), url( '../img/games/game-1.png');
+            }
+            &:nth-child(3) label{
+                background: linear-gradient(180deg, rgba($primary,0) 0%, rgba($primary,0.8) 80%, rgba($primary,1) 100%), url( '../img/games/game-1.png');
+            }
+            &:nth-child(4) label{
+                background: linear-gradient(180deg, rgba($primary,0) 0%, rgba($primary,0.8) 80%, rgba($primary,1) 100%), url( '../img/games/game-1.png');
+            }
+            &:nth-child(5) label{
+                background: linear-gradient(180deg, rgba($primary,0) 0%, rgba($primary,0.8) 80%, rgba($primary,1) 100%), url( '../img/games/game-1.png');
+            }
+            &:nth-child(6) label{
+                background: linear-gradient(180deg, rgba($primary,0) 0%, rgba($primary,0.8) 80%, rgba($primary,1) 100%), url( '../img/games/game-1.png');
+            }
+            &:nth-child(n) label{
+                background-repeat: no-repeat;
+                background-position: center top;
+                background-size: cover;
+            }
         }
     }
 }

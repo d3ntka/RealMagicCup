@@ -136,6 +136,9 @@
   &__cola {
     z-index: -1;
     position: relative;
+    @include media-breakpoint-down(md){
+      display: none;
+    }
     &:after {
       position: absolute;
       content: "";
@@ -159,8 +162,9 @@
 
   &__path {
     background: url("../img/bg/path_hosts.svg");
-    background-size: cover;
+    background-size: auto;
     background-repeat: no-repeat;
+    background-position: left 90%;
     padding: 35rem 0 7rem 0;
     position: relative;
     z-index: 49;
@@ -185,6 +189,8 @@
     padding-top: 12.5rem;
     @include media-breakpoint-down(lg){
       flex-direction: column;
+      justify-content: center;
+
     }
   }
   &__card {
@@ -195,10 +201,20 @@
     }
     img {
       border-radius: $border-radius;
+      max-width: 40rem;
+      max-height: 51rem;
+      height: auto;
+      width: 100%;
+      object-fit: cover;
+      object-position: center top;
+      margin: 0 auto;
     }
     &:nth-child(2){
       margin-top: -13.5rem;
-
+      img{
+        max-width: 53.5rem;
+        max-height: 59rem;
+      }
       z-index: 50;
       @include media-breakpoint-down(lg){
         order: -1;

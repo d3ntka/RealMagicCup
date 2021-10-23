@@ -65,7 +65,9 @@ a{
 .color-black{
     color: #000;
 }
-
+.bg-primary{
+    background-color: $primary;
+}
 .dc-btn{
     border: 2px solid #ffffff;
     border-radius: 7px;

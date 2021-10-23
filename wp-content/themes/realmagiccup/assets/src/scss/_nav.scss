@@ -41,14 +41,16 @@
   padding-bottom: 1.2rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin: 0 0.2rem;
   border-radius: $border-radius;
-  &:hover {
+  &:hover,&.active {
     border-radius: $border-radius;
     // border: 1px solid #fff;
     background-color: #fff;
     color: $primary;
     // padding: 0.4rem;
   }
+  
 }
 
 .footer {
@@ -71,6 +73,9 @@
   }
   &__logo {
     margin-top: -30.5rem;
+    img{
+      max-width: 100%;
+    }
   }
   &__low {
     text-align: center;
@@ -144,7 +149,7 @@
     background-size: contain;
     background-position: center;
     left: -11rem;
-    bottom: -17rem;
+    bottom: -37rem;
     width: 35rem;
     height: 44rem;
     // z-index: -1;
@@ -157,7 +162,7 @@
     background-size: contain;
     background-position: center;
     right: -16rem;
-    bottom: -20rem;
+    bottom: -40rem;
     width: 41rem;
     height: 48rem;
     // z-index: -1;
