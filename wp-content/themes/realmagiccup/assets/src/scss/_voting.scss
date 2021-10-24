@@ -88,12 +88,12 @@
         }
         
         /* On mouse-over, add a grey background color */
-        li:hover input ~ .checkmark {
-            // height: 24px;
-            // width: 24px;
-            // border: 5px solid rgba(#fff, 0.8);
-            // outline: 7px solid #B90313;
-        }
+        // li:hover input ~ .checkmark {
+        //     // height: 24px;
+        //     // width: 24px;
+        //     // border: 5px solid rgba(#fff, 0.8);
+        //     // outline: 7px solid #B90313;
+        // }
         li:hover input ~ .checkmark:after {
             opacity: 0.5;
         }

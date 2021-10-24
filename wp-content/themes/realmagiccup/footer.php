@@ -50,9 +50,14 @@
 								</div>
 							</a>
 						</div>
+						<?php
+						$regulamin = get_field( 'regulamin' );
+						if ( $regulamin ) : ?>
 						<div class="footer__low">
-							Sprawdź <a class="underline" href="">regulamin</a> konkursu
+							Sprawdź <a class="underline" href="<?php echo esc_url( $regulamin['url'] ); ?>">regulamin</a> konkursu
 						</div>
+						<?php endif; ?>
+
 					</div>
 				</div>
 				<div class="row">

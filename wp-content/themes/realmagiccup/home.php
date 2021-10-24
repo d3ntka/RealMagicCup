@@ -242,77 +242,80 @@ get_header();
 </section>
 
 <div class="schedule" id="harmonogram">
-    <div class="container">
+    <div class="schedule__bg">
 
-    <?php if ( $schedule_title = get_field( 'schedule_title' ) ) : ?>
-        <h2>
-            <?php echo esc_html( $schedule_title ); ?>
-        </h2>
-    <?php endif; ?>
+        <div class="container">
     
-    <?php if ( $schedule_subtitle = get_field( 'schedule_subtitle' ) ) : ?>
-        <div class="subtitle color-primary">
-            <?php echo esc_html( $schedule_subtitle ); ?>
-        </div>
-    <?php endif; ?>
+        <?php if ( $schedule_title = get_field( 'schedule_title' ) ) : ?>
+            <h2>
+                <?php echo esc_html( $schedule_title ); ?>
+            </h2>
+        <?php endif; ?>
+        
+        <?php if ( $schedule_subtitle = get_field( 'schedule_subtitle' ) ) : ?>
+            <div class="subtitle color-primary">
+                <?php echo esc_html( $schedule_subtitle ); ?>
+            </div>
+        <?php endif; ?>
+        
+        <?php if ( have_rows( 'Schedule_games' ) ) : ?>
+            <div class="schedule__games">
     
-    <?php if ( have_rows( 'Schedule_games' ) ) : ?>
-        <div class="schedule__games">
-
-        <?php while ( have_rows( 'Schedule_games' ) ) :
-            the_row(); ?>
-                <?php
-            $game_bg_field = get_sub_field( 'game_bg' );
-            $game_bg = $game_bg_field['url'];
-    
-             ?>
-    
-            <div class="schedule__game" style="background-image:url('<?=$game_bg?>')">
-                <?php
-                $game_icon = get_sub_field( 'game_icon' );
-                if ( $game_icon ) : ?>
-                <div class="">
-                    <img class="schedule__game--icon" src="<?php echo esc_url( $game_icon['url'] ); ?>" alt="<?php echo esc_attr( $game_icon['alt'] ); ?>" />
-                </div>
-                <?php endif; ?>
-    
-                <!-- <div class=""> -->
-                    <?php if ( $game_phase = get_sub_field( 'game_phase' ) ) : ?>
-                        <div class="schedule__game--phase" ><?php echo esc_html( $game_phase ); ?></div>
-                    <?php endif; ?>
-                    <?php if ( $game_name = get_sub_field( 'game_name' ) ) : ?>
-                        <div class="schedule__game--name" ><?php echo ( $game_name ); ?></div>
-                    <?php endif; ?>
-                <!-- </div> -->
-
-                <?php if ( $game_date = get_sub_field( 'game_date' ) ) : ?>
-                    <div class="schedule__game--date" ><?php echo esc_html( $game_date ); ?></div>
-                <?php endif; ?>
-
+            <?php while ( have_rows( 'Schedule_games' ) ) :
+                the_row(); ?>
                     <?php
-                    $link = get_sub_field( 'game_link' );
-                    if ( $link ) :
-                        $link_url = $link['url'];
-                        $link_title = $link['title'];
-                        $link_target = $link['target'] ? $link['target'] : '_self';
-                        ?>
-                    <a href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
-                        <div class="game__btn">
-                            <span>
-                                <?php echo esc_html( $link_title ); ?>
-                            </span>
-                        </div>
-                    </a>
+                $game_bg_field = get_sub_field( 'game_bg' );
+                $game_bg = $game_bg_field['url'];
+        
+                 ?>
+        
+                <div class="schedule__game" style="background-image:url('<?=$game_bg?>')">
+                    <?php
+                    $game_icon = get_sub_field( 'game_icon' );
+                    if ( $game_icon ) : ?>
+                    <div class="">
+                        <img class="schedule__game--icon" src="<?php echo esc_url( $game_icon['url'] ); ?>" alt="<?php echo esc_attr( $game_icon['alt'] ); ?>" />
+                    </div>
                     <?php endif; ?>
+        
+                    <!-- <div class=""> -->
+                        <?php if ( $game_phase = get_sub_field( 'game_phase' ) ) : ?>
+                            <div class="schedule__game--phase" ><?php echo esc_html( $game_phase ); ?></div>
+                        <?php endif; ?>
+                        <?php if ( $game_name = get_sub_field( 'game_name' ) ) : ?>
+                            <div class="schedule__game--name" ><?php echo ( $game_name ); ?></div>
+                        <?php endif; ?>
+                    <!-- </div> -->
+    
+                    <?php if ( $game_date = get_sub_field( 'game_date' ) ) : ?>
+                        <div class="schedule__game--date" ><?php echo esc_html( $game_date ); ?></div>
+                    <?php endif; ?>
+    
+                        <?php
+                        $link = get_sub_field( 'game_link' );
+                        if ( $link ) :
+                            $link_url = $link['url'];
+                            $link_title = $link['title'];
+                            $link_target = $link['target'] ? $link['target'] : '_self';
+                            ?>
+                        <a href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>">
+                            <div class="game__btn">
+                                <span>
+                                    <?php echo esc_html( $link_title ); ?>
+                                </span>
+                            </div>
+                        </a>
+                        <?php endif; ?>
+                </div>
+        
+        
+        
+            <?php endwhile; ?>
             </div>
     
+        <?php endif; ?>
     
-    
-        <?php endwhile; ?>
         </div>
-
-    <?php endif; ?>
-
     </div>
 </div>
 

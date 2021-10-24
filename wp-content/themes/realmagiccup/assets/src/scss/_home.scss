@@ -156,6 +156,8 @@
   }
 }
 
+
+
 .hosts {
   position: relative;
   margin-top: -10rem;
@@ -164,8 +166,8 @@
     background: url("../img/bg/path_hosts.svg");
     background-size: auto;
     background-repeat: no-repeat;
-    background-position: left 200%;
-    padding: 35rem 0 7rem 0;
+    background-position: left 100%;
+    padding: 35rem 0 10rem 0;
     position: relative;
     z-index: 49;
     text-shadow: 0px 0px 1px $dark;
@@ -213,7 +215,7 @@
       margin: 0 auto;
     }
     &:nth-child(2){
-      margin-top: -13.5rem;
+      margin-top: -12rem;
       img{
         max-width: 53.5rem;
         max-height: 59rem;
@@ -284,6 +286,9 @@
     background-repeat: no-repeat;
     padding-top: 26rem;
     padding-bottom: 23rem;
+    &__bg{
+      background-color: $light-grey;
+    }
     &__games{
       padding-top: 5rem;
       display: flex;
