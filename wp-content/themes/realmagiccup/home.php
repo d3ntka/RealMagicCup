@@ -17,7 +17,7 @@ get_header();
     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/bg/hellothere.png" alt="">
 </section>
 
-<section class="intro" id="turniej">
+<section class="intro" id="wyzwania">
     <div class="container">
         <div class="intro__video--cont"></div>
         <div class="row intro__video--bg">
@@ -136,6 +136,10 @@ get_header();
     </div>
 
 </section>
+
+
+
+
 <section class="hosts" id="prowadzacy">
     <div class="hosts__path">
         <div class="container">

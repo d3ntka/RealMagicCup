@@ -164,7 +164,7 @@
     background: url("../img/bg/path_hosts.svg");
     background-size: auto;
     background-repeat: no-repeat;
-    background-position: left 90%;
+    background-position: left 200%;
     padding: 35rem 0 7rem 0;
     position: relative;
     z-index: 49;
@@ -181,6 +181,9 @@
       top: 0;
       transform: translate(-20rem, 20rem);
       z-index: -1;
+      @include media-breakpoint-down(md){
+        display: none;
+      }
     }
   }
   &__row {

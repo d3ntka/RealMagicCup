@@ -14,10 +14,10 @@ get_template_part("template-parts/page", "nav");
 <div class="voting">
     <div class="voting__header">
         <h2>
-            Turniej jakiej gry mamy zorganizować
+            Wybierz trzy gry, w których mają zmierzyć się streamerzy!
         </h2>
         <div class="subtitle color-primary">
-            Zagłosuj a my załatwimy resztę :)
+            Zagłosuj a my załatwimy resztę
         </div>
     </div>
     <div class="votes">
