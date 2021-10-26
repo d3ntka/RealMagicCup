@@ -22,26 +22,6 @@ get_header();
         <div class="intro__video--cont"></div>
         <div class="row intro__video--bg">
 
-            <!-- <?php if ($video_url) : ?>
-
-                <div class="play-backdrop"></div>
-                <div class="play-button">
-                    <svg class="play-circles" viewBox="0 0 152 152">
-                        <circle class="play-circle-01" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="343 343" cx="76" cy="76" r="72.7" />
-                        <circle class="play-circle-02" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="309 309" cx="76" cy="76" r="65.5" />
-                    </svg>
-                    <div class="play-perspective">
-                        <button class="play-close"></button>
-                        <div class="play-triangle">
-                            <div class="play-video">
-                                <iframe width="600" height="400" src="<?php echo $video_url; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endif; ?> -->
-
             <?php if ($video_url) : 
             $video_url_poster = get_field( 'video_url_poster' ); ?>
                 <div class="video-container">
@@ -63,9 +43,6 @@ get_header();
                 <?php echo $video_txt; ?>
             </div>
         <?php endif; ?>
-
-
-
 
     </div>
 </section>
